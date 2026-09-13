@@ -4,7 +4,8 @@
   --blue: #004a98;
   --green: #006b3f;
   --link: #0879c9;
-  --max: 760px;
+  --max: 1120px;
+  --reading-measure: 72ch;
 }
 
 * {
@@ -22,7 +23,7 @@ body {
 
 .site-content {
   width: min(100% - 2rem, var(--max));
-  margin: 1.7rem auto 4rem;
+  margin: 2rem auto 4rem;
 }
 .hero {
   text-align: center;
@@ -52,6 +53,12 @@ body {
 .prose p {
   margin: 0 0 1rem;
 }
+.intro,
+.leadership,
+.join {
+  max-width: var(--reading-measure);
+  margin-inline: auto;
+}
 .prose a {
   color: var(--link);
   text-decoration: none;
@@ -69,10 +76,10 @@ h2 {
 }
 .story-grid {
   display: grid;
-  grid-template-columns: minmax(210px, 0.8fr) 1.2fr;
+  grid-template-columns: minmax(250px, 0.85fr) minmax(0, 1.15fr);
   align-items: start;
-  gap: 2rem;
-  margin: 1.1rem 0 2.2rem;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin: 1.5rem 0 2.75rem;
 }
 .story-grid > img {
   width: 100%;
