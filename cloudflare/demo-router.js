@@ -10,6 +10,11 @@ export default {
     }
 
     const requestUrl = new URL(request.url);
+    if (requestUrl.pathname === DEMO_PREFIX) {
+      requestUrl.pathname = `${DEMO_PREFIX}/`;
+      return Response.redirect(requestUrl, 308);
+    }
+
     const pagePath = requestUrl.pathname === DEMO_PREFIX || requestUrl.pathname === `${DEMO_PREFIX}/`
       ? "/"
       : requestUrl.pathname.slice(DEMO_PREFIX.length);
