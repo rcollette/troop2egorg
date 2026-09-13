@@ -15,9 +15,11 @@ export default {
       return Response.redirect(requestUrl, 308);
     }
 
-    const pagePath = requestUrl.pathname === DEMO_PREFIX || requestUrl.pathname === `${DEMO_PREFIX}/`
-      ? "/"
-      : requestUrl.pathname.slice(DEMO_PREFIX.length);
+    const pagePath =
+      requestUrl.pathname === DEMO_PREFIX ||
+      requestUrl.pathname === `${DEMO_PREFIX}/`
+        ? "/"
+        : requestUrl.pathname.slice(DEMO_PREFIX.length);
 
     const upstreamUrl = new URL(PAGES_ORIGIN);
     upstreamUrl.pathname = pagePath;

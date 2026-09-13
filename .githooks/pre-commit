@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Format supported staged files, then stage Prettier's changes before the commit.
+[ -z "$(git diff --cached --name-only --diff-filter=ACMR)" ] && exit 0
+
+git diff --cached --name-only --diff-filter=ACMR -z |
+  xargs -0 npx --no-install prettier --experimental-cli --ignore-unknown --write
+git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 git add --

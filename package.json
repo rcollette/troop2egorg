@@ -1,0 +1,19 @@
+{
+  "name": "troop2egorg",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Troop 2 East Greenwich static site and Cloudflare deployment configuration.",
+  "engines": {
+    "node": ">=24.21.0 <25",
+    "npm": ">=11"
+  },
+  "packageManager": "npm@11.19.0",
+  "scripts": {
+    "format:check": "prettier . --check --experimental-cli",
+    "format:write": "prettier . --write --experimental-cli",
+    "prepare": "git config core.hooksPath .githooks"
+  },
+  "devDependencies": {
+    "prettier": "3.9.0"
+  }
+}
