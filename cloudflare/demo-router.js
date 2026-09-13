@@ -1,4 +1,6 @@
-const GITHUB_ORIGIN = "https://raw.githubusercontent.com/rcollette/troop2egorg/main";
+// Cloudflare Pages deploys this repository from GitHub. The Worker only mounts
+// that Pages site below /demo; it never serves content from GitHub itself.
+const PAGES_ORIGIN = "https://troop2eg-demo.pages.dev";
 const DEMO_PREFIX = "/demo";
 
 export default {
@@ -8,13 +10,13 @@ export default {
     }
 
     const requestUrl = new URL(request.url);
-    const upstreamUrl = new URL(GITHUB_ORIGIN);
-
     const pagePath = requestUrl.pathname === DEMO_PREFIX || requestUrl.pathname === `${DEMO_PREFIX}/`
-      ? "/index.html"
+      ? "/"
       : requestUrl.pathname.slice(DEMO_PREFIX.length);
 
+    const upstreamUrl = new URL(PAGES_ORIGIN);
     upstreamUrl.pathname = pagePath;
+    upstreamUrl.search = requestUrl.search;
 
     const upstreamRequest = new Request(upstreamUrl, request);
     const response = await fetch(upstreamRequest);
